@@ -88,46 +88,32 @@
   <section class="overview">
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">Request a Slot</span>
-        <h2>Tell us who's coming</h2>
-        <p>Send the shape of your booking and we'll confirm by phone — Darkmoor takes bookings by call, so treat this as a heads-up rather than a guaranteed slot.</p>
+        <span class="eyebrow">Book a Slot</span>
+        <h2>Pick a room, pick a time</h2>
+        <p>This calendar shows real availability — once a slot is booked, it's gone. You'll get an instant confirmation, and we'll still be in touch if anything needs confirming by phone.</p>
       </div>
-      <div class="card-panel" style="max-width:640px;">
-        <form class="book-form" id="book-form" action="https://formspree.io/f/mykreqyr" method="POST">
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-          <div class="two-col">
-            <div>
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" required>
-            </div>
-            <div>
-              <label for="phone">Phone</label>
-              <input id="phone" name="phone" type="tel" required>
-            </div>
-          </div>
-          <div class="two-col">
-            <div>
-              <label for="room">Preferred room</label>
-              <select id="room" name="room">
-                <option>No preference — recommend one</option>
-                <option>The Asylum Ward</option>
-                <option>The Peat Crypt</option>
-                <option>Blackwood Laboratory</option>
-                <option>The Gamekeeper's Cottage</option>
-              </select>
-            </div>
-            <div>
-              <label for="size">Group size</label>
-              <input id="size" name="size" type="number" min="2" max="8" placeholder="e.g. 5">
-            </div>
-          </div>
-          <div>
-            <label for="notes">Preferred date &amp; time</label>
-            <input id="notes" name="notes" type="text" placeholder="e.g. Thursday, around 8 PM">
-          </div>
-          <button class="btn btn-primary" type="submit" style="justify-self:start;">Send Request</button>
-          <p class="note" id="book-form-status" role="status"></p>
-        </form>
+
+      <div class="card-panel" style="padding:28px 28px 0; max-width:900px;">
+        <div class="room-picker" role="group" aria-label="Choose a room to book">
+          <button class="chip is-active" data-cal-link="darkmoor/the-asylum-ward" aria-pressed="true">The Asylum Ward</button>
+          <button class="chip" data-cal-link="darkmoor/the-peat-crypt" aria-pressed="false">The Peat Crypt</button>
+          <button class="chip" data-cal-link="darkmoor/blackwood-laboratory" aria-pressed="false">Blackwood Laboratory</button>
+          <button class="chip" data-cal-link="darkmoor/the-gamekeeper-s-cottage" aria-pressed="false">The Gamekeeper's Cottage</button>
+        </div>
+        <div id="darkmoor-cal-embed" style="width:100%; min-height:600px; margin-top:10px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="overview" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom:0;">
+        <span class="eyebrow">Prefer To Call?</span>
+        <h2>We're happy to book by phone too</h2>
+        <p>Some groups prefer to talk it through — group size, room recommendations, splitting a big party across two rooms. Call anytime during opening hours and we'll sort it out directly.</p>
+        <div class="hero-actions" style="margin-top:30px;">
+          <a class="btn btn-primary" href="tel:01020397697">Call 010 2039 7697</a>
+        </div>
       </div>
     </div>
   </section>
@@ -177,6 +163,60 @@
   </div>
 </footer>
 
+<script type="text/javascript">
+  (function (C, A, L) {
+    let p = function (a, ar) { a.q.push(ar); };
+    let d = C.document;
+    C.Cal = C.Cal || function () {
+      let cal = C.Cal;
+      let ar = arguments;
+      if (!cal.loaded) {
+        cal.ns = {};
+        cal.q = cal.q || [];
+        d.head.appendChild(d.createElement("script")).src = A;
+        cal.loaded = true;
+      }
+      if (ar[0] === L) {
+        const api = function () { p(api, arguments); };
+        const namespace = ar[1];
+        api.q = api.q || [];
+        if (typeof namespace === "string") {
+          cal.ns[namespace] = cal.ns[namespace] || api;
+          p(cal.ns[namespace], ar);
+          p(cal, ["initNamespace", namespace]);
+        } else p(cal, ar);
+        return;
+      }
+      p(cal, ar);
+    };
+  })(window, "https://app.cal.com/embed/embed.js", "init");
+
+  Cal("init", { origin: "https://app.cal.com" });
+
+  Cal("inline", {
+    elementOrSelector: "#darkmoor-cal-embed",
+    calLink: "darkmoor/the-asylum-ward",
+    config: { theme: "dark" }
+  });
+
+  document.querySelectorAll(".room-picker .chip").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      document.querySelectorAll(".room-picker .chip").forEach(function (b) {
+        b.classList.remove("is-active");
+        b.setAttribute("aria-pressed", "false");
+      });
+      btn.classList.add("is-active");
+      btn.setAttribute("aria-pressed", "true");
+
+      document.getElementById("darkmoor-cal-embed").innerHTML = "";
+      Cal("inline", {
+        elementOrSelector: "#darkmoor-cal-embed",
+        calLink: btn.getAttribute("data-cal-link"),
+        config: { theme: "dark" }
+      });
+    });
+  });
+</script>
 <script src="main.js"></script>
 </body>
 </html>
