@@ -64,9 +64,36 @@
       }
 
       bookStatus.classList.remove('error');
-      bookStatus.textContent =
-        'Request noted — we\u2019ll call ' + phone.value.trim() + ' shortly to confirm your slot.';
-      bookForm.reset();
+      bookStatus.textContent = 'Sending your request\u2026';
+
+      var submitBtn = bookForm.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
+
+      fetch(bookForm.action, {
+        method: 'POST',
+        body: new FormData(bookForm),
+        headers: { 'Accept': 'application/json' }
+      })
+        .then(function (response) {
+          if (response.ok) {
+            bookStatus.classList.remove('error');
+            bookStatus.textContent =
+              'Request sent — we\u2019ll call ' + phone.value.trim() + ' shortly to confirm your slot.';
+            bookForm.reset();
+          } else {
+            bookStatus.classList.add('error');
+            bookStatus.textContent =
+              'Something went wrong sending that. Please call us directly at 010 2039 7697.';
+          }
+        })
+        .catch(function () {
+          bookStatus.classList.add('error');
+          bookStatus.textContent =
+            'Something went wrong sending that. Please call us directly at 010 2039 7697.';
+        })
+        .finally(function () {
+          if (submitBtn) submitBtn.disabled = false;
+        });
     });
   }
 
