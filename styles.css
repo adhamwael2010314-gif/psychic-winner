@@ -889,3 +889,61 @@ footer.site{ border-top: 1px solid var(--line-soft); background: var(--bg-alt); 
   .room-meta{ flex-wrap: wrap; gap: 20px 26px; }
   .cta-block{ padding: 70px 22px 54px; }
 }
+
+/* ==========================================================================
+   ARABIC / RTL SUPPORT
+   ========================================================================== */
+:root{
+  --heading-ar: 'Aref Ruqaa', 'Cairo', serif;
+  --body-ar: 'Cairo', sans-serif;
+}
+
+html[dir="rtl"] body{
+  font-family: var(--body-ar);
+  line-height: 1.9;
+}
+
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4{
+  font-family: var(--heading-ar);
+  letter-spacing: 0;
+}
+
+/* Keep the DARKMOOR brand mark in its original Latin display font everywhere */
+html[dir="rtl"] .brand .mark,
+html[dir="rtl"] .hero-content h1{
+  font-family: var(--display);
+}
+
+/* Arabic has no case and no letter-tracking convention — turn those off
+   wherever the original design relied on uppercase + wide tracking */
+html[dir="rtl"] .eyebrow,
+html[dir="rtl"] .links a,
+html[dir="rtl"] .nav-call,
+html[dir="rtl"] .btn,
+html[dir="rtl"] .room-meta span,
+html[dir="rtl"] .field .k,
+html[dir="rtl"] .spec-panel .row .k,
+html[dir="rtl"] .chip,
+html[dir="rtl"] .foot-col h4,
+html[dir="rtl"] .breadcrumb,
+html[dir="rtl"] .map-render .plus,
+html[dir="rtl"] .room-card .index,
+html[dir="rtl"] .room-card .enter,
+html[dir="rtl"] .room-nav-strip,
+html[dir="rtl"] .stat .l,
+html[dir="rtl"] .seal-frame .sub,
+html[dir="rtl"] table.hours td:last-child{
+  font-family: var(--body-ar);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+html[dir="rtl"] p,
+html[dir="rtl"] .lede,
+html[dir="rtl"] .tagline{
+  font-family: var(--body-ar);
+}
+
+html[dir="rtl"] .eyebrow::before{ content: '— '; }
