@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Location &amp; Booking — Darkmoor Escape Rooms</title>
+<meta name="description" content="Darkmoor Escape Rooms, 28 Gamal Salem St, Dokki, Giza. Opening hours, directions, and phone booking.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<header class="site">
+  <div class="nav">
+    <a href="index.html" class="brand"><span class="mark">DARKMOOR<span class="dot">.</span></span></a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="rooms.html">Rooms</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="location.html" aria-current="page">Location &amp; Booking</a>
+    </nav>
+    <a class="nav-call" href="tel:01020397697">☎ 010 2039 7697</a>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="accent-line"></div>
+      <span class="eyebrow">Location &amp; Booking</span>
+      <h1>Find the door, then call ahead</h1>
+      <p>Darkmoor sits on Gamal Salem Street in Dokki. Walk-ins are welcome after opening — the best slots go to whoever calls first.</p>
+    </div>
+  </section>
+
+  <section class="location" style="padding-top:70px;">
+    <div class="wrap">
+      <div class="loc-grid">
+        <div class="card-panel">
+          <div class="field">
+            <div class="k">Address</div>
+            <div class="v arabic">28 جمال سالم, St، قسم الدقي، محافظة الجيزة 12611</div>
+          </div>
+          <div class="field">
+            <div class="k">Plus Code</div>
+            <div class="v mono">26Q2+WH, Dokki</div>
+          </div>
+          <div class="field">
+            <div class="k">Phone</div>
+            <div class="v mono"><a href="tel:01020397697">010 2039 7697</a></div>
+          </div>
+          <div class="field" style="margin-bottom:0;">
+            <div class="k">Hours</div>
+            <table class="hours">
+              <tr><td>Sunday – Thursday</td><td>4 PM – 12 AM</td></tr>
+              <tr class="today"><td>Friday</td><td>4 PM – 1 AM</td></tr>
+              <tr><td>Saturday</td><td>4 PM – 1 AM</td></tr>
+            </table>
+          </div>
+          <div class="hero-actions" style="justify-content:flex-start; margin-top:30px;">
+            <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=28+Gamal+Salem+St%2C+Dokki%2C+Giza+12611" target="_blank" rel="noopener">Get Directions</a>
+          </div>
+        </div>
+
+        <div class="map-render">
+          <svg viewBox="0 0 400 340" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <path d="M-20,60 C80,30 160,80 260,50 C340,30 400,60 420,40" fill="none" stroke="#3a4a42" stroke-width="1"/>
+            <path d="M-20,120 C90,90 170,140 270,110 C350,90 400,120 420,100" fill="none" stroke="#3a4a42" stroke-width="1"/>
+            <path d="M-20,180 C100,150 180,200 280,170 C360,150 400,180 420,160" fill="none" stroke="#3a4a42" stroke-width="1"/>
+            <path d="M-20,240 C110,210 190,260 290,230 C370,210 400,240 420,220" fill="none" stroke="#3a4a42" stroke-width="1"/>
+            <path d="M-20,300 C120,270 200,320 300,290 C380,270 400,300 420,280" fill="none" stroke="#3a4a42" stroke-width="1"/>
+          </svg>
+          <div class="pin">
+            <div class="dot"></div>
+            <div class="label">Darkmoor</div>
+            <div class="plus">26Q2+WH · Dokki</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="overview">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Request a Slot</span>
+        <h2>Tell us who's coming</h2>
+        <p>Send the shape of your booking and we'll confirm by phone — Darkmoor takes bookings by call, so treat this as a heads-up rather than a guaranteed slot.</p>
+      </div>
+      <div class="card-panel" style="max-width:640px;">
+        <form class="book-form" id="book-form">
+          <div class="two-col">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required>
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" required>
+            </div>
+          </div>
+          <div class="two-col">
+            <div>
+              <label for="room">Preferred room</label>
+              <select id="room" name="room">
+                <option>No preference — recommend one</option>
+                <option>The Asylum Ward</option>
+                <option>The Peat Crypt</option>
+                <option>Blackwood Laboratory</option>
+                <option>The Gamekeeper's Cottage</option>
+              </select>
+            </div>
+            <div>
+              <label for="size">Group size</label>
+              <input id="size" name="size" type="number" min="2" max="8" placeholder="e.g. 5">
+            </div>
+          </div>
+          <div>
+            <label for="notes">Preferred date &amp; time</label>
+            <input id="notes" name="notes" type="text" placeholder="e.g. Thursday, around 8 PM">
+          </div>
+          <button class="btn btn-primary" type="submit" style="justify-self:start;">Send Request</button>
+          <p class="note" id="book-form-status" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="wrap" style="max-width:760px;">
+      <div class="section-head">
+        <span class="eyebrow">Before You Come</span>
+        <h2>A few things to know</h2>
+      </div>
+      <details class="faq-item">
+        <summary><h3>Do I need to book in advance?</h3></summary>
+        <p>Walk-ins are welcome after 4 PM, but rooms fill up on weekends. Calling ahead is the only way to guarantee your slot and room choice.</p>
+      </details>
+      <details class="faq-item">
+        <summary><h3>Is Darkmoor suitable for kids?</h3></summary>
+        <p>The Gamekeeper's Cottage runs easy-to-medium and works well for families. The Asylum Ward is built to be genuinely unsettling and isn't recommended for younger players.</p>
+      </details>
+      <details class="faq-item">
+        <summary><h3>What if my group is smaller or larger than the room's range?</h3></summary>
+        <p>Call and tell us your number — most rooms flex by a player or two, and larger groups can often be split across two rooms running back to back.</p>
+      </details>
+      <details class="faq-item">
+        <summary><h3>Is there parking nearby?</h3></summary>
+        <p>Street parking is available around Gamal Salem St; it's easiest to have your driver drop you at the entrance if you're coming by car.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid" style="border-top:none; padding-top:0;">
+      <a href="index.html" class="brand"><span class="mark">DARKMOOR<span class="dot">.</span></span></a>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="rooms.html">Rooms</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="location.html">Location &amp; Booking</a>
+      </div>
+      <div class="foot-meta">
+        28 Gamal Salem St, Dokki, Giza 12611<br>
+        <a href="tel:01020397697">010 2039 7697</a> · Opens 4 PM daily
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 Darkmoor Escape Rooms</div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
